@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "63ecc157-f1ae-4a8c-8cf1-3d24b34fac49",
+		"name": "spring-data-jpa-postman-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SAVE EMPLOYEE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"codewithdm\",\r\n    \"location\":\"bangalore\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/employee"
+			},
+			"response": []
+		},
+		{
+			"name": "GET EMPLOYEE BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/employee/1"
+			},
+			"response": []
+		},
+		{
+			"name": "ALL EMPLOYEES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/employee/all"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE EMPLOYEE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8080/employee/1"
+			},
+			"response": []
+		}
+	]
+}
