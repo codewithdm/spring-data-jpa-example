@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,11 +22,27 @@ public class EmployeeController {
     }
 
     @GetMapping("/{empId}")
-    public Employee retriveEmp(@PathVariable Integer empId){
+    public Employee retriveEmp(@PathVariable Integer empId) {
         Optional<Employee> employee = employeeRepository.findById(empId);
-        if(!employee.isPresent()){
-            throw new EntityNotFoundException("enitty: "+empId);
+        if (!employee.isPresent()) {
+            throw new EntityNotFoundException("enitty: " + empId);
         }
         return employee.get();
+    }
+
+    @GetMapping("/all")
+    public List<Employee> retriveAll() {
+        return employeeRepository.findAll();
+    }
+
+    @DeleteMapping("/{empId}")
+    public String removeEmp(@PathVariable Integer empId) {
+        String message = null;
+        Optional<Employee> employee = employeeRepository.findById(empId);
+        if (employee.isPresent()) {
+            employeeRepository.deleteById(empId);
+            return "Employee removed succussfully";
+        }
+        return "Employee doesn't exisit";
     }
 }
